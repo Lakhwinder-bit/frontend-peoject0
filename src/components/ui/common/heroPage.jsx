@@ -11,7 +11,7 @@ const PageHero = ({
   children,
 }) => {
   return (
-    <section className="bg-primary-dark text-white">
+    <section className="border-b border-border bg-surface text-foreground dark:border-white/10 dark:bg-primary-dark dark:text-white">
       <div className="container-app">
         <div className="relative overflow-hidden py-5 sm:py-12 lg:py-10">
 
@@ -24,14 +24,14 @@ const PageHero = ({
             <div className="mb-6 flex items-center gap-2 text-xs font-medium sm:mb-7 sm:text-sm">
               <Link
                 href="/"
-                className="text-white/55 transition-colors hover:text-white"
+                className="text-muted-foreground transition-colors hover:text-foreground dark:text-white/55 dark:hover:text-white"
               >
                 {breadcrumb}
               </Link>
 
               <ChevronRight
                 size={16}
-                className="text-white/30"
+                className="text-muted-foreground/60 dark:text-white/30"
               />
 
               <span className="font-semibold text-secondary">
@@ -60,7 +60,7 @@ const PageHero = ({
 
                 {/* Description */}
                 {description && (
-                  <p className="mt-2 max-w-2xl text-xs leading-6 text-white/70 sm:text-base sm:leading-6">
+                  <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground sm:text-base sm:leading-6 dark:text-white/70">
                     {description}
                   </p>
                 )}
@@ -77,7 +77,7 @@ const PageHero = ({
           </div>
 
           {/* Bottom Border */}
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-white/10" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-border dark:bg-white/10" />
 
         </div>
       </div>

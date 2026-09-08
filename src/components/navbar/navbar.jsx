@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import Logo from "./logo";
 import DesktopNav from "./desktopNav";
@@ -15,22 +15,32 @@ export default function Navbar() {
   const isHome = pathname === "/";
   const solid = !isHome;
 
+  const toggleMenu = useCallback(
+    () => setIsMobileMenuOpen((previous) => !previous),
+    [],
+  );
+  const closeMenu = useCallback(() => setIsMobileMenuOpen(false), []);
+
   return (
     <>
       <header
         className={`left-0 right-0 top-0 z-50 ${
-          solid ? "relative bg-primary-dark" : "absolute"
+          solid
+            ? "relative border-b border-border bg-card/95 text-card-foreground backdrop-blur-md dark:border-white/10 dark:bg-primary-dark/95 dark:text-white"
+            : "absolute text-white"
         }`}
       >
         <div className="container-app">
           <div className="flex h-20 items-center justify-between">
-            <Logo />
+            <Logo solid={solid} />
 
-            <DesktopNav />
+            <DesktopNav solid={solid} />
 
             <MobileMenu
               isOpen={isMobileMenuOpen}
-              onOpenChange={setIsMobileMenuOpen}
+              onToggle={toggleMenu}
+              onClose={closeMenu}
+              solid={solid}
             />
           </div>
         </div>

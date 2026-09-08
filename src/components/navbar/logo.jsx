@@ -10,11 +10,11 @@ export default function Logo() {
 
       {/* Logo Text */}
       <div className="leading-none">
-        <div className="text-lg font-extrabold tracking-tight text-white">
+        <div className="text-lg font-extrabold tracking-tight text-foreground">
           Kapoor Travels
         </div>
 
-        <div className="mt-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/65">
+        <div className="mt-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-foreground">
           Premium Taxi & Tour Services
         </div>
       </div>

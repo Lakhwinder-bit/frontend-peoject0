@@ -22,7 +22,7 @@ const FooterColumn = ({ title, links }) => {
               href={link.href}
               className="
                 text-[16px]
-                text-white/70
+                text-primary-foreground/70
                 transition-colors
                 duration-200
                 hover:text-secondary

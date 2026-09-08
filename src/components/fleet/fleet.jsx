@@ -5,7 +5,7 @@ import PopularVehicleCard from "../ui/popularVehicleCard";
 
 const Fleet = () => {
   return (
-    <section className="border-y border-border/60 bg-surface py-2 sm:py-4 lg:py-6">
+    <section className="border-y border-border/60 bg-background py-2 sm:py-4 lg:py-6">
       <div className="container-app">
 
         {/* Filters */}

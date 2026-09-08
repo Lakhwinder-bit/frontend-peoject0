@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Phone, Sun } from "lucide-react";
+import { Phone } from "lucide-react";
 import Button from "../ui/button";
+import ThemeToggle from "../ui/themeToggle";
 
 const navItems = [
   {
@@ -28,7 +29,7 @@ const navItems = [
   },
 ];
 
-export default function DesktopNav() {
+export default function DesktopNav({ solid = false }) {
   const pathname = usePathname();
 
   return (
@@ -46,8 +47,12 @@ export default function DesktopNav() {
           href={item.href}
           className={`rounded-full px-4 py-2.5 text-sm font-semibold transition-all duration-300 ${
             active
-              ? "bg-white/15 text-white backdrop-blur-md"
-              : "text-white/85 hover:bg-white/10 hover:text-white"
+              ? solid
+                ? "bg-accent text-primary"
+                : "bg-white/15 text-white backdrop-blur-md"
+              : solid
+                ? "text-muted-foreground hover:bg-accent hover:text-foreground"
+                : "text-white/85 hover:bg-white/10 hover:text-white"
           }`}
         >
           {item.label}
@@ -61,7 +66,7 @@ export default function DesktopNav() {
       <div className=" hidden lg:flex items-center">
               <a
         href="tel:+919876543210"
-        className="ml-4 flex items-center gap-2 px-3 py-2 text-sm font-semibold text-white/90 transition-colors hover:text-secondary"
+        className={`ml-4 flex items-center gap-2 px-3 py-2 text-sm font-semibold transition-colors hover:text-secondary ${solid ? "text-muted-foreground" : "text-white/90"}`}
       >
         <Phone className="size-4" />
 
@@ -69,15 +74,7 @@ export default function DesktopNav() {
       </a>
 
       {/* Theme */}
-      <Button
-        type="button"
-        variant="ghost"
-        size="icon"
-        aria-label="Toggle theme"
-        className="ml-2 size-11 rounded-full bg-black/20 text-white hover:bg-secondary hover:text-secondary-foreground"
-      >
-        <Sun className="size-4" />
-      </Button>
+      <ThemeToggle className={`ml-2 ${solid ? "" : "border-white/20 bg-white/10 text-white hover:bg-secondary hover:text-secondary-foreground"}`} />
 
       {/* Book */}
       <Button asChild variant="secondary" size="lg" className="ml-3 h-11 rounded-full px-6 shadow-glow">

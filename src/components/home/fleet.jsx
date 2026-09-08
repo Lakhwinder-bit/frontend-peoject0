@@ -12,7 +12,7 @@ import PopularVehicleCard from "../ui/popularVehicleCard";
 
 const Fleet = () => {
   return (
-    <section className="border-y border-border/60 bg-surface py-16 sm:py-20 lg:py-24">
+    <section className="border-y border-border/60 bg-background py-16 sm:py-20 lg:py-24">
       <div className="container-app">
 
         {/* Section Header */}

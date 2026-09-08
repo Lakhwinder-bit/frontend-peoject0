@@ -37,7 +37,11 @@ const Footer = () => {
               </span>
             </div>
 
-            <p className="mt-7 max-w-sm text-[15px] leading-8 text-white/70">
+            <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45">
+              Premium taxi &amp; tour services
+            </p>
+
+            <p className="mt-6 max-w-sm text-[15px] leading-8 text-white/70">
               Punjab and Himachal&apos;s trusted travel partner since 2009.
               Sanitised vehicles, verified drivers and transparent fares on
               every single trip.

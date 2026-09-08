@@ -7,7 +7,7 @@ const FleetFilters = () => {
   const [passengers, setPassengers] = useState("Any size");
 
   return (
-    <div className="mt-4 rounded-3xl border border-border/60 bg-background p-5 shadow-sm sm:mt-6">
+    <div className="mt-4 rounded-3xl border border-border/60 bg-card p-5 shadow-sm sm:mt-6">
       <div className="grid gap-5 md:grid-cols-[1fr_280px] md:items-end">
         
         {/* Search */}

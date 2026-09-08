@@ -26,8 +26,16 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable}`}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.toggle("dark", window.localStorage.getItem("kapoor-theme") === "dark");`,
+          }}
+        />
+      </head>
       <body className="min-h-screen flex flex-col antialiased">
         <Navbar />
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Quote, Star } from "lucide-react";
+import { Star } from "lucide-react";
 
 const TestimonialCard = ({
   review,
@@ -12,33 +12,27 @@ const TestimonialCard = ({
     <article
       className="
         flex
-        min-h-[380px]
+        min-h-[330px]
+        w-[min(82vw,22rem)]
+        shrink-0
         flex-col
-        rounded-3xl
-        border border-border/80
+        rounded-2xl
+        border border-border
         bg-card
-        p-7 sm:p-8
-        shadow-soft
+        p-6 sm:p-7
+        shadow-xs
         transition-all
         duration-300
         hover:-translate-y-1
         hover:shadow-card
       "
     >
-      {/* Quote Icon */}
-      <Quote
-        size={38}
-        strokeWidth={2}
-        className="text-secondary"
-      />
-
       {/* Review */}
       <p
         className="
-          mt-7
-          text-[17px]
-          leading-8
-          text-muted-foreground
+          text-base
+          leading-7
+          text-card-foreground
         "
       >
         “{review}”
@@ -52,7 +46,7 @@ const TestimonialCard = ({
           {Array.from({ length: 5 }).map((_, index) => (
             <Star
               key={index}
-              size={21}
+              size={17}
               strokeWidth={1.8}
               className={
                 index < rating

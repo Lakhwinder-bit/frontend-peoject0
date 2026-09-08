@@ -8,6 +8,7 @@ import {
   Snowflake,
   X,
 } from "lucide-react";
+import Button from "./button";
 
 const PopularVehicleCard = ({
   image,
@@ -126,23 +127,16 @@ const PopularVehicleCard = ({
             </div>
 
             {/* Book Button */}
-            <button
-              type="button"
-              onClick={() => setShowModal(true)}
-              className="
-                rounded-full
-                bg-primary
-                px-5 py-2.5
-                text-sm
-                font-semibold
-                text-primary-foreground
-                transition
-                hover:opacity-90
-                active:scale-95
-              "
-            >
-              Book
-            </button>
+             <Button
+                   type="button"
+            onClick={() => setShowModal(true)}
+                   variant="hero"
+                   size="lg"
+                   className="rounded-full"
+                 >
+                   Book
+                 
+                 </Button>
           </div>
         </div>
       </article>
@@ -209,23 +203,15 @@ const PopularVehicleCard = ({
                 </p>
               </div>
 
-              <button
-                type="button"
-                onClick={() => setShowModal(false)}
-                className="
-                  mt-5
-                  w-full
-                  rounded-xl
-                  bg-primary
-                  px-5 py-3
-                  font-semibold
-                  text-primary-foreground
-                  transition
-                  hover:opacity-90
-                "
-              >
-                Close
-              </button>
+                  <Button
+                        type="button"
+                        variant="hero"
+                        size="lg"
+                        className="rounded-full"
+                      >
+                        Book
+                      
+                      </Button>
             </div>
           </div>,
           document.body

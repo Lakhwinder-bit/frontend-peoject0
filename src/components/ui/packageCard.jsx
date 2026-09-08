@@ -83,11 +83,11 @@ const TourPackageCard = ({
                 flex shrink-0
                 items-center gap-1
                 rounded-full
-                bg-white/95
+                bg-card/95
                 px-3 py-1.5
                 text-sm
                 font-semibold
-                text-primary
+                text-card-foreground
                 shadow-soft
               "
             >

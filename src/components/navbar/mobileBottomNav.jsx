@@ -29,7 +29,7 @@ const MOBILE_TABS = [
   },
   {
     label: "Trips",
-    to: "/trips",
+    to: "/tourPackage",
     icon: Map,
   },
   {
@@ -103,7 +103,7 @@ const MobileBottomNav = ({ isMenuOpen = false }) => {
       aria-label="Mobile primary navigation"
       aria-hidden={isMenuOpen}
       className={`
-        fixed inset-x-0 bottom-0 z-[9999] lg:hidden
+        fixed inset-x-0 bottom-0 z-9999 lg:hidden
         transition-transform duration-200 ease-out
         ${
           isMenuOpen || !isVisible
@@ -115,9 +115,9 @@ const MobileBottomNav = ({ isMenuOpen = false }) => {
         paddingBottom: "env(safe-area-inset-bottom, 0px)",
       }}
     >
-      <div className="relative mx-3 mb-3 overflow-hidden rounded-[28px] border border-white/10 bg-[#0c1215]/95 px-2 pb-2 pt-2 shadow-[0_15px_45px_rgba(0,0,0,0.35)] backdrop-blur-xl">
+      <div className="relative mx-3 mb-3 overflow-hidden rounded-[28px] border border-border bg-card/95 px-2 pb-2 pt-2 shadow-card backdrop-blur-xl dark:border-white/10 dark:bg-primary-dark/95">
 
-        <div className="pointer-events-none absolute left-10 right-10 top-0 h-px bg-gradient-to-r from-transparent via-secondary/50 to-transparent" />
+        <div className="pointer-events-none absolute left-10 right-10 top-0 h-px bg-linear-to-r from-transparent via-secondary/50 to-transparent" />
 
         <ul className="grid grid-cols-5 items-center">
           {MOBILE_TABS.map((tab) => {
@@ -132,7 +132,7 @@ const MobileBottomNav = ({ isMenuOpen = false }) => {
                 <Link
                   href={tab.to}
                   aria-current={active ? "page" : undefined}
-                  className="group relative flex min-h-[66px] w-full flex-col items-center justify-center gap-1 outline-none"
+                  className="group relative flex min-h-16.5 w-full flex-col items-center justify-center gap-1 outline-none"
                 >
                   {/* Active background */}
                   <span
@@ -140,7 +140,7 @@ const MobileBottomNav = ({ isMenuOpen = false }) => {
                       absolute left-1/2 top-1/2
                       h-10 w-11
                       -translate-x-1/2
-                      -translate-y-[70%]
+                      translate-y-[-70%]
                       rounded-[50px]
                       ${
                         active
@@ -157,12 +157,12 @@ const MobileBottomNav = ({ isMenuOpen = false }) => {
                       ${
                         active
                           ? "-translate-y-1 scale-105 text-secondary-foreground"
-                          : "text-white/45"
+                          : "text-muted-foreground dark:text-white/45"
                       }
                     `}
                   >
                     <Icon
-                      className="size-[19px]"
+                      className="size-4.75"
                       strokeWidth={active ? 2.5 : 1.8}
                     />
                   </span>
@@ -174,7 +174,7 @@ const MobileBottomNav = ({ isMenuOpen = false }) => {
                       ${
                         active
                           ? "text-secondary"
-                          : "text-white/45"
+                          : "text-muted-foreground dark:text-white/45"
                       }
                     `}
                   >
@@ -185,7 +185,7 @@ const MobileBottomNav = ({ isMenuOpen = false }) => {
                   <span
                     className={`
                       absolute bottom-0 left-1/2
-                      h-[2px]
+                      h-0.5
                       -translate-x-1/2
                       rounded-full
                       bg-secondary
