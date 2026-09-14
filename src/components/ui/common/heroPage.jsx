@@ -11,7 +11,7 @@ const PageHero = ({
   children,
 }) => {
   return (
-    <section className="border-b border-border bg-surface text-foreground dark:border-white/10 dark:bg-primary-dark dark:text-white">
+    <section className="   bg-primary-dark dark:bg-primary-dark dark:text-white">
       <div className="container-app">
         <div className="relative overflow-hidden py-5 sm:py-12 lg:py-10">
 
@@ -46,7 +46,7 @@ const PageHero = ({
               <div>
 
                 {/* Heading */}
-                <h1 className="text-lg font-extrabold leading-tight tracking-[-0.03em] sm:text-xl lg:text-3xl">
+                <h1 className="text-lg text-white font-extrabold leading-tight tracking-[-0.03em] sm:text-xl lg:text-3xl">
                   {title}{" "}
 
                   {highlight && (
@@ -76,8 +76,7 @@ const PageHero = ({
             </div>
           </div>
 
-          {/* Bottom Border */}
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-border dark:bg-white/10" />
+      
 
         </div>
       </div>

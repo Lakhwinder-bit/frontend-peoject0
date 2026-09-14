@@ -26,7 +26,7 @@ export default function Navbar() {
       <header
         className={`left-0 right-0 top-0 z-50 ${
           solid
-            ? "relative border-b border-border bg-card/95 text-card-foreground backdrop-blur-md dark:border-white/10 dark:bg-primary-dark/95 dark:text-white"
+            ? "relative bg-primary-dark text-card-foreground   dark:bg-primary-dark/95 dark:text-white"
             : "absolute text-white"
         }`}
       >

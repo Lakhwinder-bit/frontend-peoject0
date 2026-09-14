@@ -74,7 +74,7 @@ export default function DesktopNav({ solid = false }) {
       </a>
 
       {/* Theme */}
-      <ThemeToggle className={`ml-2 ${solid ? "" : "border-white/20 bg-white/10 text-white hover:bg-secondary hover:text-secondary-foreground"}`} />
+      <ThemeToggle className={`ml-2 border-0 ${solid ? "" : "bg-white/10 text-white hover:bg-secondary hover:text-secondary-foreground"}`} />
 
       {/* Book */}
       <Button asChild variant="secondary" size="lg" className="ml-3 h-11 rounded-full px-6 shadow-glow">

@@ -115,7 +115,7 @@ const MobileBottomNav = ({ isMenuOpen = false }) => {
         paddingBottom: "env(safe-area-inset-bottom, 0px)",
       }}
     >
-      <div className="relative mx-3 mb-3 overflow-hidden rounded-[28px] border border-border bg-card/95 px-2 pb-2 pt-2 shadow-card backdrop-blur-xl dark:border-white/10 dark:bg-primary-dark/95">
+      <div className="relative mx-3 mb-3 overflow-hidden rounded-[28px] border-0 bg-card/95 px-2 pb-2 pt-2 shadow-card backdrop-blur-xl dark:bg-primary-dark/95">
 
         <div className="pointer-events-none absolute left-10 right-10 top-0 h-px bg-linear-to-r from-transparent via-secondary/50 to-transparent" />
 

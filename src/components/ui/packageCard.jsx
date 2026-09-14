@@ -33,7 +33,7 @@ const TourPackageCard = ({
       "
     >
       {/* Image */}
-      <div className="relative h-[160px] overflow-hidden sm:h-[180px]">
+      <div className="relative h-[180px] overflow-hidden sm:h-[200px]">
         <Image
           src={image}
           alt={title}
@@ -141,7 +141,7 @@ const TourPackageCard = ({
 
         {/* Highlights */}
         <ul className="mt-5 space-y-2.5">
-          {highlights.map((highlight) => (
+          {highlights.slice(0,3).map((highlight) => (
             <li
               key={highlight}
               className="
@@ -165,10 +165,11 @@ const TourPackageCard = ({
               <span>{highlight}</span>
             </li>
           ))}
+          {highlights.length > 3 && ( <li className="text-sm font-medium text-primary"> +{highlights.length - 3} more </li> )}
         </ul>
 
         {/* Divider */}
-        <div className="my-5 h-px bg-border" />
+        <div className="my-3 h-px bg-border" />
 
         {/* Price + Book */}
         <div className="flex items-end justify-between gap-4">

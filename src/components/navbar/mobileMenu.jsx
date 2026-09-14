@@ -94,8 +94,8 @@ export default function MobileMenu({
       <ThemeToggle
         className={
           solid
-            ? ""
-            : "border-white/20 bg-white/10 text-white hover:bg-secondary hover:text-secondary-foreground"
+            ? "border-0"
+            : "border-0 bg-white/10 text-white hover:bg-secondary hover:text-secondary-foreground"
         }
       />
 
@@ -112,9 +112,9 @@ export default function MobileMenu({
           rounded-full
           backdrop-blur-md
           ${
-            solid
-              ? "border-border bg-card text-card-foreground dark:border-white/20 dark:bg-white/10 dark:text-white"
-              : "border-white/20 text-white"
+          solid
+            ? "border-0"
+            : "border-0 bg-white/10 text-white hover:bg-secondary hover:text-secondary-foreground"
           }
         `}
       >
@@ -216,8 +216,7 @@ export default function MobileMenu({
             shrink-0
             items-center
             justify-between
-            border-b
-            border-border
+           
             bg-card
             px-4
             sm:px-5
