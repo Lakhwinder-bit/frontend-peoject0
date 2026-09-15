@@ -5,3 +5,8 @@ export const getPackage = async ()=>{
 
     return res.data;
 }
+
+export const getFeeds = async()=>{
+    const res = await apiClient.get("/feeds");
+    return res.data.data
+}

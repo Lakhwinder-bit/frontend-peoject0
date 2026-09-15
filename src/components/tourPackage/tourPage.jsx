@@ -13,7 +13,9 @@ const Tours = ({package: packages}) => {
    
           {/* Amritsar */}
 
-          {packages?.data.map((pak)=>(
+          {packages?.data
+          .filter((pak)=> pak.status === true)
+          .map((pak)=>(
          <TourPackageCard
             key={pak._id}
             image={pak.image}
@@ -23,7 +25,7 @@ const Tours = ({package: packages}) => {
             duration={pak.duration}
             reviews={pak.reviewCount}
             highlights={pak.highlights}
-            price={pak.price}
+            price={`₹${pak.price}`}
           />
           ))}
        
