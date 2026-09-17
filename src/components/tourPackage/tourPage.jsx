@@ -13,7 +13,7 @@ const Tours = ({package: packages}) => {
    
           {/* Amritsar */}
 
-          {packages?.data
+          {packages
           .filter((pak)=> pak.status === true)
           .map((pak)=>(
          <TourPackageCard
