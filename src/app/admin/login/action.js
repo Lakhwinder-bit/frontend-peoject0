@@ -1,61 +1,76 @@
-"use server";
+// "use server";
 
-import apiClient from "@/lib/apiclient";
-import { cookies } from "next/headers";
+// import apiClient from "@/lib/apiclient";
+// import { cookies } from "next/headers";
 
-export async function LoginAction(data) {
-  const { email, password } = data;
+// export async function LoginAction(data) {
+//   const { email, password } = data;
 
-  if (!email || !password) {
-    return {
-      success: false,
-      message: "Email and password are required",
-    };
-  }
+//   if (!email || !password) {
+//     return {
+//       success: false,
+//       message: "Email and password are required",
+//     };
+//   }
 
-  try {
-    const response = await apiClient.post("/auth/login", {
-      email,
-      password,
-    });
+//   try {
+//     const response = await apiClient.post("/auth/login", {
+//       email,
+//       password,
+//     });
 
-    // Get Set-Cookie from backend response
-    const setCookie = response.headers["set-cookie"];
+//     const setCookie = response.headers["set-cookie"];
 
-    console.log("BACKEND SET COOKIE:", setCookie);
+//     console.log("BACKEND SET COOKIE:", setCookie);
 
-    if (setCookie?.length) {
-      const cookieStore = await cookies();
+//     if (setCookie?.length) {
+//       const cookieStore = await cookies();
 
-      // Example: extract access_token
-      const cookieString = setCookie[0];
+//       for (const cookie of setCookie) {
+//         const [cookiePair] = cookie.split(";");
 
-      const token = cookieString
-        .split(";")[0]
-        .split("=")
-        .slice(1)
-        .join("=");
+//         const separatorIndex = cookiePair.indexOf("=");
 
-      cookieStore.set("access_token", token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
-        path: "/",
-      });
-    }
+//         const name = cookiePair.slice(0, separatorIndex);
+//         const value = cookiePair.slice(separatorIndex + 1);
 
-    return {
-      success: true,
-      data: response.data,
-    };
-  } catch (error) {
-    console.error("LOGIN ERROR:", error?.response?.data);
+//         if (name === "accessToken") {
+//           cookieStore.set("accessToken", value, {
+//             httpOnly: true,
+//             secure: process.env.NODE_ENV === "production",
+//             sameSite: "strict",
+//             path: "/",
+//             maxAge: 15 * 60,
+//           });
+//         }
 
-    return {
-      success: false,
-      message:
-        error?.response?.data?.message ||
-        "Login failed",
-    };
-  }
-}
+//         if (name === "refreshToken") {
+//           cookieStore.set("refreshToken", value, {
+//             httpOnly: true,
+//             secure: process.env.NODE_ENV === "production",
+//             sameSite: "strict",
+//             path: "/",
+//             maxAge: 7 * 24 * 60 * 60,
+//           });
+//         }
+//       }
+//     }
+
+//     return {
+//       success: true,
+//       data: response.data,
+//     };
+//   } catch (error) {
+//     console.error(
+//       "LOGIN ERROR:",
+//       error?.response?.data
+//     );
+
+//     return {
+//       success: false,
+//       message:
+//         error?.response?.data?.message ||
+//         "Login failed",
+//     };
+//   }
+// }

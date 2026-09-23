@@ -1,8 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css"
 
-import Navbar from "@/components/navbar/navbar";
-import Footer from "@/components/footer/footer";
+import { AdminAuthProvider } from "@/contrext/AdminAuthContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +21,7 @@ export const metadata = {
   description: "Explore destinations and plan your perfect journey.",
 };
 
-export default function RootLayout({ children }) {
+export default function AdminLayout({ children }) {
   return (
     <html
       lang="en"
@@ -40,7 +39,10 @@ export default function RootLayout({ children }) {
         {/* <Navbar /> */}
 
         <main className="flex-1">
+          <AdminAuthProvider>
+
           {children}
+          </AdminAuthProvider>
         </main>
 
         {/* <Footer /> */}

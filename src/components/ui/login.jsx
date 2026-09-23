@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Eye, EyeOff, LockKeyhole, Mail } from "lucide-react";
-import { LoginAction } from "@/app/admin/login/action";
+import { adminLogin } from "@/api/adminApi";
 
 
 export default function AdminLoginPage() {
@@ -12,38 +12,43 @@ export default function AdminLoginPage() {
 
 
 
-  const handleSubmit = async(e) => {
-    e.preventDefault();
+ const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    setLoading(true);
-    setError("")
-    const form = e.currentTarget;
-    const data = {
-      email: form.email.value,
-      password: form.password.value,
-    };
+  setLoading(true);
+  setError("");
 
-    try {
-       const result = await LoginAction(data);
-          console.log("LOGIN RESULT:", result);
+  const form = e.currentTarget;
 
-      if (!result.success) {
-        setError(result.message);
-        return;
-      }
+  const data = {
+    email: form.email.value,
+    password: form.password.value,
+  };
 
-      console.log("Login successful"); 
+  try {
+    const result = await adminLogin(data);
 
-    } catch (error) {
-         console.error(error);
-      setError("Something went wrong");
-    }finally{
-        setLoading(false)
+    console.log("LOGIN RESULT:", result);
+
+    if (!result?.success) {
+      setError(result?.message || "Login failed");
+      return;
     }
 
+    console.log("✅ Login successful");
 
-    // API will be connected here
-  };
+
+  } catch (error) {
+    console.error("LOGIN ERROR:", error);
+
+    setError(
+      error?.response?.data?.message ||
+      "Something went wrong"
+    );
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <main className="min-h-screen bg-[#f6f7f9] flex items-center justify-center px-4">
