@@ -7,6 +7,7 @@ import {
 } from "react";
 
 import { getCurrentAdmim } from "@/api/adminApi";
+
 const AdminAuthContext = createContext(null);
 
 export function AdminAuthProvider({ children }) {
@@ -16,6 +17,8 @@ export function AdminAuthProvider({ children }) {
   const checkAuth = async () => {
     try {
       const response = await getCurrentAdmim();
+
+      console.log("CURRENT ADMIN:", response);
 
       setAdmin(response?.data);
     } catch (error) {

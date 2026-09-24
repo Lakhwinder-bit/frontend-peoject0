@@ -1,0 +1,13 @@
+"use client";
+
+import { MoreHorizontal, Plus, Users } from "lucide-react";
+import { SearchInput, SectionHeading, StatusBadge } from "@/components/admin/adminUi";
+import { useState } from "react";
+
+const customers = [["AM", "Aarav Mehta", "aarav@example.com", "+91 98765 12040", "12", "₹1,84,200", "Active"], ["NK", "Nisha Kapoor", "nisha@example.com", "+91 98110 44218", "08", "₹1,12,600", "Active"], ["RS", "Rohan Singh", "rohan@example.com", "+91 98990 88712", "06", "₹78,400", "Active"], ["MS", "Meera Shah", "meera@example.com", "+91 98200 11890", "03", "₹42,100", "Inactive"]];
+
+export default function CustomersPage() {
+  const [search, setSearch] = useState("");
+  const list = customers.filter((customer) => customer[1].toLowerCase().includes(search.toLowerCase()));
+  return <div className="mx-auto w-full max-w-[1500px] space-y-7 p-4 sm:p-6 lg:p-8"><SectionHeading eyebrow="Relationships" title="Customers" description="Understand the travelers who keep your routes moving." action={<button className="inline-flex h-10 items-center gap-2 rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground"><Plus size={16} /> Add customer</button>} /><div className="max-w-md"><SearchInput value={search} onChange={setSearch} placeholder="Search customers" /></div><div className="overflow-x-auto rounded-2xl border border-border bg-card shadow-soft"><table className="min-w-[820px] w-full text-left text-sm"><thead className="border-b border-border bg-muted/50 text-xs uppercase tracking-wide text-muted-foreground"><tr>{["Customer", "Contact", "Bookings", "Total spending", "Status", ""].map((head) => <th key={head} className="px-5 py-4 font-semibold">{head}</th>)}</tr></thead><tbody className="divide-y divide-border">{list.map(([initials, name, email, phone, trips, spending, status]) => <tr key={email} className="hover:bg-muted/40"><td className="px-5 py-4"><div className="flex items-center gap-3"><span className="flex size-9 items-center justify-center rounded-xl bg-accent text-xs font-bold text-primary">{initials}</span><div><p className="font-semibold text-foreground">{name}</p><p className="text-xs text-muted-foreground">Joined recently</p></div></div></td><td className="px-5 py-4"><p className="text-foreground">{email}</p><p className="mt-1 text-xs text-muted-foreground">{phone}</p></td><td className="px-5 py-4 text-foreground">{trips}</td><td className="px-5 py-4 font-medium text-foreground">{spending}</td><td className="px-5 py-4"><StatusBadge status={status} /></td><td className="px-5 py-4 text-muted-foreground"><MoreHorizontal size={18} /></td></tr>)}</tbody></table></div><div className="flex items-center gap-2 text-sm text-muted-foreground"><Users size={16} /> {list.length} customers shown</div></div>;
+}

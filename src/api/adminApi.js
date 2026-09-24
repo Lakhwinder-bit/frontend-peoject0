@@ -9,6 +9,16 @@ return res.data
 }
 
 export const getCurrentAdmim = async() =>{
-    const res = apiClient.get("/auth/me");
+    const res = await apiClient.get("/auth/me");
+    return res.data
+}
+
+export const adminLogout = async() =>{
+    const res = await apiClient.post("/auth/logout");
+    return res.data
+}
+
+export const genrateAccesTokenApi = async() =>{
+    const res = await apiClient.get("/auth/refresh");
     return res.data
 }

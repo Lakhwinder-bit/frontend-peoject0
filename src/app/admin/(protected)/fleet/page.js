@@ -1,0 +1,10 @@
+"use client";
+
+import Image from "next/image";
+import { MoreHorizontal, Plus, Users } from "lucide-react";
+import { vehicles } from "@/components/admin/adminData";
+import { SectionHeading, StatusBadge } from "@/components/admin/adminUi";
+
+export default function FleetPage() {
+	return <div className="mx-auto w-full max-w-[1500px] space-y-7 p-4 sm:p-6 lg:p-8"><SectionHeading eyebrow="Operations" title="Vehicles" description="Keep your fleet visible, available, and trip-ready." action={<button className="inline-flex h-10 items-center gap-2 rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground"><Plus size={16} /> Add vehicle</button>} /><div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">{vehicles.map((vehicle) => <article key={vehicle.registration} className="overflow-hidden rounded-2xl border border-border bg-card shadow-soft"><div className="relative h-40 bg-muted"><Image src={vehicle.image} alt={vehicle.name} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" /><span className="absolute right-3 top-3"><StatusBadge status={vehicle.status} /></span></div><div className="p-5"><div className="flex items-start justify-between gap-3"><div><h2 className="font-semibold text-foreground">{vehicle.name}</h2><p className="mt-1 text-sm text-muted-foreground">{vehicle.type}</p></div><button className="text-muted-foreground hover:text-foreground" aria-label={`More actions for ${vehicle.name}`}><MoreHorizontal size={18} /></button></div><div className="mt-5 grid grid-cols-2 gap-3 text-sm"><div><p className="text-xs text-muted-foreground">Registration</p><p className="mt-1 font-medium text-foreground">{vehicle.registration}</p></div><div><p className="text-xs text-muted-foreground">Capacity</p><p className="mt-1 flex items-center gap-1 font-medium text-foreground"><Users size={14} /> {vehicle.capacity}</p></div></div><div className="mt-4 border-t border-border pt-4 text-sm"><span className="text-muted-foreground">Assigned route </span><span className="font-medium text-foreground">{vehicle.route}</span></div></div></article>)}</div></div>;
+}
