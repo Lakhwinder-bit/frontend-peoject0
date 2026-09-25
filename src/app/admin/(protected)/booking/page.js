@@ -1,13 +1,33 @@
-
-"use client";
-
-import { useState } from "react";
-import { Download, Plus, SlidersHorizontal } from "lucide-react";
-import { bookings } from "@/components/admin/adminData";
-import { SearchInput, SectionHeading, StatusBadge } from "@/components/admin/adminUi";
+import { getServerBookings } from "@/api/server";
+import {SectionHeading} from "@/components/admin/adminUi";
+import BookingTable from "@/components/admin/booking/bookingTable";
+import TourSkeleton from "@/components/tourPackage/TourSkeleton";
+import { Suspense } from "react";
 
 export default function BookingsPage() {
-    const [search, setSearch] = useState("");
-    const filtered = bookings.filter((booking) => `${booking.id} ${booking.customer} ${booking.route}`.toLowerCase().includes(search.toLowerCase()));
-    return <div className="mx-auto w-full max-w-[1500px] space-y-7 p-4 sm:p-6 lg:p-8"><SectionHeading eyebrow="Operations" title="Bookings" description="Track every reservation from request to completion." action={<button className="inline-flex h-10 items-center gap-2 rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground"><Plus size={16} /> New booking</button>} /><div className="flex flex-col gap-3 rounded-2xl border border-border bg-card p-4 shadow-soft sm:flex-row"><SearchInput value={search} onChange={setSearch} placeholder="Search booking, customer or route" /><button className="inline-flex h-10 items-center justify-center gap-2 rounded-xl border border-border px-4 text-sm font-medium text-foreground hover:bg-muted"><SlidersHorizontal size={16} /> Filters</button><button className="inline-flex h-10 items-center justify-center gap-2 rounded-xl border border-border px-4 text-sm font-medium text-foreground hover:bg-muted"><Download size={16} /> Export</button></div><div className="flex gap-2 overflow-x-auto pb-1">{["All bookings", "Confirmed", "Pending", "Completed", "Cancelled"].map((tab, index) => <button key={tab} className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium ${index === 0 ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:text-foreground"}`}>{tab}</button>)}</div><div className="overflow-x-auto rounded-2xl border border-border bg-card shadow-soft"><table className="min-w-[900px] w-full text-left text-sm"><thead className="border-b border-border bg-muted/50 text-xs uppercase tracking-wide text-muted-foreground"><tr>{["Booking", "Customer", "Trip", "Vehicle", "Travel date", "Amount", "Status"].map((head) => <th key={head} className="px-5 py-4 font-semibold">{head}</th>)}</tr></thead><tbody className="divide-y divide-border">{filtered.map((booking) => <tr key={booking.id} className="hover:bg-muted/40"><td className="px-5 py-4 font-semibold text-primary">{booking.id}</td><td className="px-5 py-4 font-medium text-foreground">{booking.customer}</td><td className="px-5 py-4 text-muted-foreground">{booking.route}</td><td className="px-5 py-4 text-muted-foreground">{booking.vehicle}</td><td className="px-5 py-4 text-muted-foreground">{booking.date}</td><td className="px-5 py-4 font-medium text-foreground">{booking.amount}</td><td className="px-5 py-4"><StatusBadge status={booking.status} /></td></tr>)}</tbody></table></div></div>;
+ 
+
+  return (
+    <div className="mx-auto w-full max-w-[1500px] space-y-7 p-4 sm:p-6 lg:p-8">
+      <SectionHeading
+        eyebrow="Operations"
+        title="Bookings"
+        description="Track every reservation from request to completion."
+       
+      />
+
+
+      <Suspense fallback={<TourSkeleton />}>
+      <BookingData />
+      </Suspense>
+ 
+    </div>
+  );
+}
+
+
+
+async function BookingData() {
+    const bookingData = await getServerBookings();
+    return  <BookingTable bookingTable={bookingData}/>
 }

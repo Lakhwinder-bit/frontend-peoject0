@@ -22,3 +22,12 @@ export const genrateAccesTokenApi = async() =>{
     const res = await apiClient.get("/auth/refresh");
     return res.data
 }
+
+
+//Booking
+
+export const bookings = async() =>{
+    const res = await apiClient.get("/admin/bookings");
+    
+    return res.data;
+}
