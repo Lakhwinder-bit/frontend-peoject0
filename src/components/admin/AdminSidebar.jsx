@@ -32,7 +32,7 @@ const navigation = [
   },
   {
     label: "Route Management",
-    href: "/admin/routes",
+    href: "/admin/rout",
     icon: Map,
   },
   {

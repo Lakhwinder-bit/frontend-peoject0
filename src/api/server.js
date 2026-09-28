@@ -30,17 +30,24 @@ export async function getServerBookings() {
     const api = await getServerApi();
 
     const res = await api.get("/admin/bookings");
-
-    console.log("BOOKINGS STATUS:", res.status);
-    console.log("BOOKINGS DATA:", res.data);
+    
 
     return res.data;
   } catch (error) {
-    console.log("========== BOOKINGS SERVER ERROR ==========");
+ console.log(error)
 
-    console.log("STATUS:", error.response?.status);
-    console.log("DATA:", error.response?.data);
-    console.log("URL:", error.config?.url);
+    throw error;
+  }
+}
+
+export async function getRoutes(){
+    try {
+    const api = await getServerApi();
+
+    const res = await api.get("/admin/adminRoutes");
+    return res.data;
+  } catch (error) {
+   console.log(error)
 
     throw error;
   }

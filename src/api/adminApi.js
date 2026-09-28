@@ -31,3 +31,4 @@ export const bookings = async() =>{
     
     return res.data;
 }
+
