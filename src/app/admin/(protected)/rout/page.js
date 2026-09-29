@@ -1,16 +1,10 @@
 import { SectionHeading, StatusBadge } from "@/components/admin/adminUi";
 import RoutTabel from "@/components/admin/rout/rouTable";
 import { Plus } from "lucide-react";
-import TourSkeleton from "@/components/tourPackage/TourSkeleton";
 import { Suspense } from "react";
 import { getRoutes } from "@/api/server";
+import TabelSkeleton from "@/components/ui/skitonTabel";
 
-const routes = [
-  ["Delhi", "Jaipur", "268 km", "5h 30m", "Toyota Innova", "Active"],
-  ["Amritsar", "Manali", "400 km", "10h 15m", "Tempo Traveller", "Active"],
-  ["Chandigarh", "Shimla", "115 km", "4h 20m", "Maruti Suzuki", "Active"],
-  ["Delhi", "Agra", "233 km", "4h 10m", "Toyota Crysta", "Inactive"],
-];
 
 export default function RoutesPage() {
   return (
@@ -26,7 +20,7 @@ export default function RoutesPage() {
         }
       />
      
-     <Suspense fallback={<TourSkeleton />}>
+     <Suspense fallback={<TabelSkeleton />}>
        <RoutesData />
      </Suspense>
     </div>

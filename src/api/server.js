@@ -52,3 +52,29 @@ export async function getRoutes(){
     throw error;
   }
 }
+
+export async function getFleetsAdmin() {
+    try {
+    const api = await getServerApi();
+
+    const res = await api.get("/admin/adminFeed");
+    return res.data;
+  } catch (error) {
+   console.log(error)
+
+    throw error;
+  }
+}
+
+export async function getPackageAdmin(){
+    try {
+    const api = await getServerApi();
+
+    const res = await api.get("/admin/adminPackage");
+    return res.data;
+  } catch (error) {
+   console.log(error)
+
+    throw error;
+  }
+}

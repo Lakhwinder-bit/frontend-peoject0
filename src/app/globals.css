@@ -466,3 +466,14 @@
     );
   }
 }
+
+
+@layer components {
+  .table-heading {
+    @apply px-5 py-4 text-left text-[11px] font-semibold uppercase tracking-wider text-muted-foreground;
+  }
+
+  .table-cell {
+    @apply px-5 py-5;
+  }
+}

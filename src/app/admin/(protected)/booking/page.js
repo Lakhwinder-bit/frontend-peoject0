@@ -1,7 +1,7 @@
 import { getServerBookings } from "@/api/server";
 import {SectionHeading} from "@/components/admin/adminUi";
 import BookingTable from "@/components/admin/booking/bookingTable";
-import TourSkeleton from "@/components/tourPackage/TourSkeleton";
+import TabelSkeleton from "@/components/ui/skitonTabel";
 import { Suspense } from "react";
 
 export default function BookingsPage() {
@@ -17,7 +17,7 @@ export default function BookingsPage() {
       />
 
 
-      <Suspense fallback={<TourSkeleton />}>
+      <Suspense fallback={<TabelSkeleton/>}>
       <BookingData />
       </Suspense>
  

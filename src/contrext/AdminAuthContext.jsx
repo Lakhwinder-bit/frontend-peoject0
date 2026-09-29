@@ -18,8 +18,6 @@ export function AdminAuthProvider({ children }) {
     try {
       const response = await getCurrentAdmim();
 
-      console.log("CURRENT ADMIN:", response);
-
       setAdmin(response?.data);
     } catch (error) {
       console.error("Auth check failed:", error);

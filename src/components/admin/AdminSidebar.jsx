@@ -45,21 +45,7 @@ const navigation = [
     href: "/admin/package",
     icon: Package,
   },
-  {
-    label: "Customers",
-    href: "/admin/customers",
-    icon: Users,
-  },
-  {
-    label: "Messages",
-    href: "/admin/messages",
-    icon: Mail,
-  },
-  {
-    label: "Settings",
-    href: "/admin/settings",
-    icon: Settings,
-  },
+
 ];
 
 export default function AdminSidebar({ open = false, onClose }) {
