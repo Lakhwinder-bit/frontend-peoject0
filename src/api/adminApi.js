@@ -32,3 +32,33 @@ export const bookings = async() =>{
     return res.data;
 }
 
+
+export async function createPackageAdmin(PackageFrom){
+    try {
+
+    const res = await apiClient.post("/admin/createPackage", PackageFrom);
+    return res.data;
+  } catch (error) {
+   console.log(error)
+
+    throw error;
+  }
+}
+
+
+export async function updatePackageAdmin(id, packageData) {
+  const response = await apiClient.put(
+    `/admin/package/${id}`,
+    packageData
+  );
+
+  return response.data;
+}
+
+export async function deletePackageAdmin(id) {
+  const response = await apiClient.delete(
+    `/admin/package/${id}`
+  );
+
+  return response.data;
+}

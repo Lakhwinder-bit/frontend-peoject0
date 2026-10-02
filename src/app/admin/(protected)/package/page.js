@@ -5,6 +5,7 @@ import PackagesTabel from "@/components/admin/package/packageTabel";
 import { Suspense } from "react";
 import { getPackageAdmin } from "@/api/server";
 import TabelSkeleton from "@/components/ui/skitonTabel";
+import AddNewPackage from "@/components/admin/package/PackageAdd/AddNewPackage"
 export default function PackagesPage() {
   return (
     <div className="mx-auto w-full max-w-[1500px] space-y-7 p-4 sm:p-6 lg:p-8">
@@ -13,9 +14,7 @@ export default function PackagesPage() {
         title="Packages"
         description="Curate the journeys your customers remember."
         action={
-          <button className="inline-flex h-10 items-center gap-2 rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground">
-            <Plus size={16} /> Create package
-          </button>
+         <AddNewPackage />
         }
       />
 
