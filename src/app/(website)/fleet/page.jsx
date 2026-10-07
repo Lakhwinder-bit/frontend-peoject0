@@ -1,13 +1,14 @@
 import { Suspense } from "react";
-import Fleet from "@/components/fleet/fleet";
-import HeroPage from "@/components/ui/common/heroPage";
-import { getFeeds } from "@/api/publicApi";
-import FeedSkeleton from "@/components/fleet/fleetSkeleton";
+import Fleet from "@/features/fleet/compontent/fleet";
+import HeroPage from "@/shared/compontent/common/heroPage";
+
+import FeedSkeleton from "@/features/fleet/compontent/fleetSkeleton";
+import { getFeeds } from "@/features/fleet/api/fleetApi";
 
 export default function FleetPage() {
 
     return (
-   <main className="min-h-screen bg-background text-foreground">
+   <div className="min-h-screen bg-background text-foreground">
   <HeroPage
     currentPage="Fleet"
     title="A vehicle for every"
@@ -18,7 +19,7 @@ export default function FleetPage() {
 <FeedsData/>
  </Suspense>
 
-</main>
+</div>
     );
 }
 

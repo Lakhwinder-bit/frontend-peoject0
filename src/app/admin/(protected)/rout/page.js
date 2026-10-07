@@ -1,9 +1,9 @@
-import { SectionHeading, StatusBadge } from "@/components/admin/adminUi";
-import RoutTabel from "@/components/admin/rout/rouTable";
+import { SectionHeading, StatusBadge } from "@/features/admin/adminShared/compontent/adminUi";
+import RoutTabel from "@/features/admin/rout/component/rouTable";
 import { Plus } from "lucide-react";
 import { Suspense } from "react";
-import { getRoutes } from "@/api/server";
-import TabelSkeleton from "@/components/ui/skitonTabel";
+import { getRoutes } from "@/features/admin/rout/api/routApi";
+import TabelSkeleton from "@/shared/compontent/skitonTabel";
 
 
 export default function RoutesPage() {
@@ -33,5 +33,4 @@ async function RoutesData() {
 console.log(routesData)
   return  <RoutTabel routes={routesData}/>
 }
-
 

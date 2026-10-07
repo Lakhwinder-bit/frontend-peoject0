@@ -1,12 +1,13 @@
-import AboutIntro from "@/components/about/AboutIntro";
-import AboutValues from "@/components/about/AboutValues";
-import AboutMilestones from "@/components/about/AboutMilestones";
-import AboutTeam from "@/components/about/AboutTeam";
-import HeroPage from "@/components/ui/common/heroPage";
+
+import AboutValues from "@/features/about/compontent/AboutValues";
+import AboutMilestones from "@/features/about/compontent/AboutMilestones";
+import AboutTeam from "@/features/about/compontent/AboutTeam";
+import HeroPage from "@/shared/compontent/common/heroPage";
+import AboutIntro from "@/features/about/compontent/AboutIntro";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground">
       <HeroPage
         currentPage="About Us"
         title="Built on repeat customers,"
@@ -21,6 +22,6 @@ export default function AboutPage() {
 
       <AboutTeam />
 
-    </main>
+    </div>
   );
 }

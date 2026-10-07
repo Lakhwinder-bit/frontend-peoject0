@@ -1,9 +1,9 @@
 import {  Plus } from "lucide-react";
-import { SectionHeading} from "@/components/admin/adminUi";
+import { SectionHeading} from "@/features/admin/adminShared/compontent/adminUi";
 import { Suspense } from "react";
-import { getFleetsAdmin } from "@/api/server";
-import FleetTabel from "@/components/admin/fleet/fleetTable";
-import TabelSkeleton from "@/components/ui/skitonTabel";
+import { getFleetsAdmin } from "@/features/admin/fleet/api/adminFleetApi";
+import FleetTabel from "@/features/admin/fleet/fleetTable";
+import TabelSkeleton from "@/shared/compontent/skitonTabel";
 
 export default function FleetPage() {
   return (

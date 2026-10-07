@@ -1,11 +1,12 @@
 import { Plus } from "lucide-react";
-import { SectionHeading, StatusBadge } from "@/components/admin/adminUi";
+import { SectionHeading, StatusBadge } from "@/features/admin/adminShared/compontent/adminUi";
 
-import PackagesTabel from "@/components/admin/package/packageTabel";
+import PackageTable from "@/features/admin/package/compontent/packageTabel";
 import { Suspense } from "react";
-import { getPackageAdmin } from "@/api/server";
-import TabelSkeleton from "@/components/ui/skitonTabel";
-import AddNewPackage from "@/components/admin/package/PackageAdd/AddNewPackage"
+
+import TabelSkeleton from "@/shared/compontent/skitonTabel";
+import AddNewPackage from "@/features/admin/package/compontent/AddNewPackage"
+import { getPackageAdmin } from "@/features/admin/package/api/adminPackageServerApi";
 export default function PackagesPage() {
   return (
     <div className="mx-auto w-full max-w-[1500px] space-y-7 p-4 sm:p-6 lg:p-8">
@@ -28,5 +29,5 @@ export default function PackagesPage() {
 
 async function AdminPackageData() {
 	const PackageData = await getPackageAdmin();
-	return <PackagesTabel packages={PackageData}/>
+	return <PackageTable packages={PackageData}/>
 }

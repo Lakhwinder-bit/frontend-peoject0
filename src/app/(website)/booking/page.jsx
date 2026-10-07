@@ -1,9 +1,9 @@
-import HeroPage from "@/components/ui/common/heroPage";
-import BookingFlow from "@/components/booking/BookingFlow";
+import HeroPage from "@/shared/compontent/common/heroPage";
+import BookingFlow from "@/features/booking/compontent/BookingFlow";
 
 export default function BookingPage() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground">
 
       {/* Hero */}
       <HeroPage
@@ -15,6 +15,6 @@ export default function BookingPage() {
 
       <BookingFlow />
 
-    </main>
+    </div>
   );
 }

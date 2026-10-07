@@ -1,8 +1,8 @@
 "use client";
 
 import { ArrowUpRight, CalendarCheck, CarFront, CheckCircle2, Clock3, IndianRupee, MoreHorizontal, TrendingUp } from "lucide-react";
-import { bookings } from "@/components/admin/adminData";
-import { SectionHeading, StatCard, StatusBadge } from "@/components/admin/adminUi";
+import { bookings } from "@/features/admin/rout/component/adminData";
+import { SectionHeading, StatCard, StatusBadge } from "@/features/admin/adminShared/compontent/adminUi";
 
 const bars = [58, 76, 45, 82, 68, 91, 74, 88, 62, 79, 96, 84];
 

@@ -1,19 +1,21 @@
 import { Suspense } from "react";
-import Hero from "@/components/home/hero";
-import WhyKapoorTravels from "@/components/home/whyKapoorTravels";
-import Fleet from "@/components/home/fleet";
-import TourPackages from "@/components/home/puplorPackage";
-import PopularRoutes from "@/components/home/popularRoutes";
-import Testimonials from "@/components/home/testimonials";
-import FAQ from "@/components/home/faq";
-import { getFeeds, getPackage, getRoutes } from "@/api/publicApi";
-import FeedSkeleton from "@/components/fleet/fleetSkeleton";
-import TourSkeleton from "@/components/tourPackage/TourSkeleton";
+import Hero from "@/features/home/compontent/hero";
+import WhyKapoorTravels from "@/features/home/compontent/whyKapoorTravels";
+import Fleet from "@/features/home/compontent/fleet";
+import TourPackages from "@/features/home/compontent/puplorPackage";
+import PopularRoutes from "@/features/home/compontent/popularRoutes";
+import Testimonials from "@/features/home/compontent/testimonials";
+import FAQ from "@/features/home/compontent/faq";
+import FeedSkeleton from "@/features/fleet/compontent/fleetSkeleton";
+import TourSkeleton from "@/features/tourPackage/compontent/TourSkeleton";
+import { getFeeds } from "@/features/fleet/api/fleetApi";
+import { getPackage } from "@/features/tourPackage/api/packageApi";
+import { getRoutes } from "@/features/home/api/homeApi";
 
 export default function HomePage() {
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground">
       <Hero />
       <WhyKapoorTravels />
       <Suspense fallback={<FeedSkeleton />}>
@@ -28,7 +30,7 @@ export default function HomePage() {
       <Testimonials />
       <FAQ />
 
-    </main>
+    </div>
   );
 }
 

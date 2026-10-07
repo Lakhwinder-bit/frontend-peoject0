@@ -6,7 +6,7 @@ import {
   useState,
 } from "react";
 
-import { getCurrentAdmim } from "@/api/adminApi";
+import { getCurrentAdmin } from "@/features/admin/auth/api/adminAuthApi";
 
 const AdminAuthContext = createContext(null);
 
@@ -16,7 +16,7 @@ export function AdminAuthProvider({ children }) {
 
   const checkAuth = async () => {
     try {
-      const response = await getCurrentAdmim();
+      const response = await getCurrentAdmin();
 
       setAdmin(response?.data);
     } catch (error) {

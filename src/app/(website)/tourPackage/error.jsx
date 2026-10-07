@@ -2,7 +2,7 @@
 
 export default function Error({ error, reset }) {
   return (
-    <main className="container-app min-h-screen py-20">
+    <section className="container-app min-h-screen py-20">
       <div className="mx-auto max-w-lg rounded-2xl border p-8 text-center">
 
         <h2 className="text-2xl font-semibold">
@@ -21,6 +21,6 @@ export default function Error({ error, reset }) {
         </button>
 
       </div>
-    </main>
+    </section>
   );
 }

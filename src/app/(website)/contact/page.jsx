@@ -1,12 +1,13 @@
-import ContactInfoCards from "@/components/contact/ContactInfoCards";
-import ContactForm from "@/components/contact/ContactForm";
-import ContactLocation from "@/components/contact/ContactLocation";
-import BusinessHours from "@/components/contact/BusinessHours";
-import HeroPage from "@/components/ui/common/heroPage";
+import ContactInfoCards from "@/features/contact/compontent/ContactInfoCards";
+import ContactForm from "@/features/contact/compontent/ContactForm";
+import ContactLocation from "@/features/contact/compontent/ContactLocation";
+
+import HeroPage from "@/shared/compontent/common/heroPage";
+import BusinessHours from "@/features/contact/compontent/BusinessHours";
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground">
 
       {/* Hero */}
       <HeroPage
@@ -36,6 +37,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-    </main>
+    </div>
   );
 }

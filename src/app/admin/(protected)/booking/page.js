@@ -1,7 +1,7 @@
-import { getServerBookings } from "@/api/server";
-import {SectionHeading} from "@/components/admin/adminUi";
-import BookingTable from "@/components/admin/booking/bookingTable";
-import TabelSkeleton from "@/components/ui/skitonTabel";
+import { getServerBookings } from "@/features/admin/booking/api/adminBookingApi";
+import {SectionHeading} from "@/features/admin/adminShared/compontent/adminUi";
+import BookingTable from "@/features/admin/booking/compontent/bookingTable";
+import TabelSkeleton from "@/shared/compontent/skitonTabel";
 import { Suspense } from "react";
 
 export default function BookingsPage() {

@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import AdminGuard from "@/components/admin/adminGuard";
-import AdminSidebar from "@/components/admin/AdminSidebar";
-import AdminHeader from "@/components/admin/AdminHeader";
+import AdminGuard from "@/features/admin/adminShared/compontent/adminGuard";
+import AdminSidebar from "@/features/admin/adminShared/compontent/AdminSidebar";
+import AdminHeader from "@/features/admin/adminShared/compontent/AdminHeader";
 
 export default function AdminLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);

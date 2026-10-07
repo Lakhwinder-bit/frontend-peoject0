@@ -1,7 +1,7 @@
 "use client";
 
 import { MoreHorizontal, Plus, Users } from "lucide-react";
-import { SearchInput, SectionHeading, StatusBadge } from "@/components/admin/adminUi";
+import { SearchInput, SectionHeading, StatusBadge } from "@/features/admin/adminShared/compontent/adminUi";
 import { useState } from "react";
 
 const customers = [["AM", "Aarav Mehta", "aarav@example.com", "+91 98765 12040", "12", "₹1,84,200", "Active"], ["NK", "Nisha Kapoor", "nisha@example.com", "+91 98110 44218", "08", "₹1,12,600", "Active"], ["RS", "Rohan Singh", "rohan@example.com", "+91 98990 88712", "06", "₹78,400", "Active"], ["MS", "Meera Shah", "meera@example.com", "+91 98200 11890", "03", "₹42,100", "Inactive"]];

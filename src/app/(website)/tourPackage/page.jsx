@@ -1,12 +1,13 @@
 import { Suspense } from "react";
-import HeroPage from "@/components/ui/common/heroPage";
-import Tours from "@/components/tourPackage/tourPage";
-import { getPackage } from "@/api/publicApi";
-import TourSkeleton from "@/components/tourPackage/TourSkeleton";
+import HeroPage from "@/shared/compontent/common/heroPage";
+import Tours from "@/features/tourPackage/compontent/tourPage";
+
+import TourSkeleton from "@/features/tourPackage/compontent/TourSkeleton";
+import { getPackage } from "@/features/tourPackage/api/packageApi";
 
 export default async function TourPackage() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground">
       <HeroPage
         currentPage="Packages"
         title="Discover your next"
@@ -16,7 +17,7 @@ export default async function TourPackage() {
       <Suspense fallback={<TourSkeleton />}>
         <PackageData />
       </Suspense>
-    </main>
+    </div>
   );
 }
 
