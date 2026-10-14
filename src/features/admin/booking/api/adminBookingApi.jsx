@@ -1,4 +1,3 @@
-// import { getAdminServerClient } from "@/features/admin/adminShared/api/adminServerClient";
 import apiClient from "@/shared/lib/apiclient";
 
 export async function getAdminBookings() {

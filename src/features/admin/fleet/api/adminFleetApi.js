@@ -1,7 +1,6 @@
-import { getAdminServerClient } from "@/features/admin/adminShared/api/adminServerClient";
+import apiClient from "@/shared/lib/apiclient";
 
 export async function getFleetsAdmin() {
-  const api = await getAdminServerClient();
-  const response = await api.get("/admin/adminFeed");
+  const response = await apiClient.get("/admin/adminFeed");
   return response.data;
 }

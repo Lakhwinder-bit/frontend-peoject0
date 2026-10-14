@@ -1,11 +1,48 @@
+"use client";
+
 import {  Plus } from "lucide-react";
 import { SectionHeading} from "@/features/admin/adminShared/compontent/adminUi";
-import { Suspense } from "react";
+import { useEffect, useState } from "react";
 import { getFleetsAdmin } from "@/features/admin/fleet/api/adminFleetApi";
 import FleetTabel from "@/features/admin/fleet/fleetTable";
 import TabelSkeleton from "@/shared/compontent/skitonTabel";
 
 export default function FleetPage() {
+  const [fleetsData, setFleetsData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    let isMounted = true;
+
+    async function loadFleets() {
+      try {
+        const data = await getFleetsAdmin();
+        if (isMounted) {
+          setFleetsData(data);
+        }
+      } catch (requestError) {
+        if (isMounted) {
+          setError(
+            requestError.response?.data?.message ||
+              requestError.message ||
+              "Unable to load vehicles. Please try again."
+          );
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    }
+
+    loadFleets();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   return (
     <div className="mx-auto w-full max-w-[1500px] space-y-7 p-4 sm:p-6 lg:p-8">
       <SectionHeading
@@ -18,16 +55,15 @@ export default function FleetPage() {
           </button>
         }
       />
-     <Suspense fallback={<TabelSkeleton />}>
-     <FleetData />
-	 </Suspense>
+      {loading ? (
+        <TabelSkeleton />
+      ) : error ? (
+        <p role="alert" className="rounded-xl border border-destructive/30 bg-destructive/10 p-4 text-sm text-destructive">
+          {error}
+        </p>
+      ) : (
+        <FleetTabel fleets={fleetsData} />
+      )}
     </div>
   );
-}
-
-
-async function FleetData() {
-	const fleetsData = await getFleetsAdmin();
-	console.log(fleetsData)
-	return <FleetTabel fleets={fleetsData} />
 }

@@ -1,5 +1,10 @@
 import apiClient from "@/shared/lib/apiclient";
 
+export async function getAdminPackages() {
+  const response = await apiClient.get("/admin/adminPackage");
+  return response.data;
+}
+
 export async function createPackageAdmin(packageForm) {
   const response = await apiClient.post("/admin/createPackage", packageForm);
   return response.data;

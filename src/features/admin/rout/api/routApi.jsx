@@ -1,7 +1,6 @@
-import { getAdminServerClient } from "@/features/admin/adminShared/api/adminServerClient";
+import apiClient from "@/shared/lib/apiclient";
 
 export async function getRoutes() {
-  const api = await getAdminServerClient();
-  const response = await api.get("/admin/adminRoutes");
+  const response = await apiClient.get("/admin/adminRoutes");
   return response.data;
 }
