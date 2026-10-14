@@ -1,10 +1,9 @@
-import { getAdminServerClient } from "@/features/admin/adminShared/api/adminServerClient";
+// import { getAdminServerClient } from "@/features/admin/adminShared/api/adminServerClient";
+import apiClient from "@/shared/lib/apiclient";
 
-export async function getServerBookings() {
+export async function getAdminBookings() {
   try {
-    const api = await getAdminServerClient();
-
-    const response = await api.get("/admin/bookings");
+    const response = await apiClient.get("/admin/bookings");
 
     return response.data;
   } catch (error) {
