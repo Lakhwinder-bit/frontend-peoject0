@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Send } from "lucide-react";
 import Button from "@/shared/compontent/button";
 
+const CONTACT_ENQUIRIES_KEY = "kapoor-contact-enquiries";
+
 export default function ContactForm() {
   const [form, setForm] = useState({
     name: "",
@@ -11,18 +13,46 @@ export default function ContactForm() {
     email: "",
     message: "",
   });
+  const [submissionStatus, setSubmissionStatus] = useState("");
+  const [submissionError, setSubmissionError] = useState("");
 
   const updateField = (field, value) => {
     setForm((prev) => ({
       ...prev,
       [field]: value,
     }));
+    setSubmissionStatus("");
+    setSubmissionError("");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Connect this handler to the enquiry API when it is available.
+    try {
+      const savedEnquiries = window.localStorage.getItem(CONTACT_ENQUIRIES_KEY);
+      const enquiries = savedEnquiries ? JSON.parse(savedEnquiries) : [];
+
+      if (!Array.isArray(enquiries)) {
+        throw new Error("Saved contact enquiries are not in the expected format.");
+      }
+
+      enquiries.push({
+        ...form,
+        submittedAt: new Date().toISOString(),
+      });
+      window.localStorage.setItem(
+        CONTACT_ENQUIRIES_KEY,
+        JSON.stringify(enquiries)
+      );
+
+      setSubmissionStatus("Your enquiry has been saved in this browser.");
+      setForm({ name: "", phone: "", email: "", message: "" });
+    } catch (error) {
+      console.error("Unable to save contact enquiry:", error);
+      setSubmissionError(
+        "We couldn't save your enquiry in this browser. Please check your browser storage settings and try again."
+      );
+    }
   };
 
   return (
@@ -76,6 +106,17 @@ export default function ContactForm() {
         onSubmit={handleSubmit}
         className="mt-7 space-y-4"
       >
+        {submissionStatus && (
+          <p role="status" className="text-sm font-medium text-success">
+            {submissionStatus}
+          </p>
+        )}
+        {submissionError && (
+          <p role="alert" className="text-sm font-medium text-destructive">
+            {submissionError}
+          </p>
+        )}
+
         {/* Name + Phone */}
         <div className="grid gap-4 sm:grid-cols-2">
           <div>

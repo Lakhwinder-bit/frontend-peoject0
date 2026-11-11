@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import AdminGuard from "@/features/admin/adminShared/compontent/adminGuard";
 import AdminSidebar from "@/features/admin/adminShared/compontent/AdminSidebar";
 import AdminHeader from "@/features/admin/adminShared/compontent/AdminHeader";
 
 export default function AdminLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const closeSidebar = useCallback(() => setSidebarOpen(false), []);
 
   return (
    <AdminGuard>
@@ -16,7 +17,7 @@ export default function AdminLayout({ children }) {
           {/* Sidebar */}
           <AdminSidebar
             open={sidebarOpen}
-            onClose={() => setSidebarOpen(false)}
+            onClose={closeSidebar}
           />
 
           {/* Main Area */}

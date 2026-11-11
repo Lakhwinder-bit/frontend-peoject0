@@ -217,55 +217,6 @@ export default function TripDetails({
         </div>
       </div>
 
-      {/* Vehicle */}
-      <div className="mt-4">
-        <label
-          htmlFor="vehicleType"
-          className="mb-2 block text-sm font-semibold text-foreground"
-        >
-          Vehicle type
-        </label>
-
-        <div className="relative">
-          <select
-            id="vehicleType"
-            value={booking.vehicleType || ""}
-            onChange={(e) =>
-              updateBooking(
-                "vehicleType",
-                e.target.value
-              )
-            }
-            className="
-              h-11 w-full appearance-none
-              rounded-full
-              border border-border
-              bg-background
-              px-4 pr-10
-              text-sm
-              text-foreground
-              outline-none
-              transition
-              focus:border-primary
-              focus:ring-2
-              focus:ring-primary/10
-            "
-          >
-            <option value="">Select vehicle</option>
-            <option value="sedan">Sedan</option>
-            <option value="suv">SUV</option>
-            <option value="tempo">Tempo Traveller</option>
-            <option value="mini-bus">Mini Bus</option>
-            <option value="luxury-bus">Luxury Bus</option>
-          </select>
-
-          <ChevronDown
-            size={14}
-            className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground"
-          />
-        </div>
-      </div>
-
       {/* Cancellation notice */}
       <div
         className="

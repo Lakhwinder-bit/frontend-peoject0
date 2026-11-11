@@ -9,7 +9,7 @@ const Detail = ({ label, value }) => (
 );
 
 export default function OrderReview({ booking, onBack, onConfirm }) {
-  const vehicle = vehicleOptions.find((option) => option.id === booking.vehicle);
+  const vehicle = vehicleOptions.find((option) => option.id === booking.vehicleType);
 
   return (
     <div className="mt-7">
@@ -20,7 +20,7 @@ export default function OrderReview({ booking, onBack, onConfirm }) {
       <div className="mt-6 grid gap-5 sm:grid-cols-2">
         <section className="rounded-2xl border border-border/80 bg-background p-5">
           <h3 className="text-sm font-bold text-card-foreground">Trip details</h3>
-          <dl className="mt-3"><Detail label="Pickup" value={booking.pickup} /><Detail label="Drop" value={booking.drop} /><Detail label="Date" value={formatDate(booking.travelDate)} /><Detail label="Time" value={formatTime(booking.travelTime)} /><Detail label="Passengers" value={booking.passengers} /></dl>
+          <dl className="mt-3"><Detail label="Pickup" value={booking.pickupLocation} /><Detail label="Drop" value={booking.dropLocation} /><Detail label="Date" value={formatDate(booking.travelDate)} /><Detail label="Time" value={formatTime(booking.travelTime)} /><Detail label="Passengers" value={booking.passengers} /></dl>
         </section>
         <section className="rounded-2xl border border-border/80 bg-background p-5">
           <h3 className="text-sm font-bold text-card-foreground">Vehicle details</h3>
@@ -30,7 +30,7 @@ export default function OrderReview({ booking, onBack, onConfirm }) {
 
       <section className="mt-5 rounded-2xl border border-border/80 bg-background p-5">
         <h3 className="text-sm font-bold text-card-foreground">Customer details</h3>
-        <dl className="mt-3"><Detail label="Name" value={booking.customerName} /><Detail label="Phone" value={booking.phone} /><Detail label="Email" value={booking.email} /></dl>
+        <dl className="mt-3"><Detail label="Name" value={booking.name} /><Detail label="Phone" value={booking.mobile} /><Detail label="Email" value={booking.email} /></dl>
       </section>
 
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-primary p-5 text-primary-foreground">

@@ -1,9 +1,6 @@
-"use client";
-
 import { useState } from "react";
 
-const TourFilters = () => {
-  const [search, setSearch] = useState("");
+const TourFilters = ({ search, onSearchChange }) => {
   const [duration, setDuration] = useState("Any duration");
   const [sort, setSort] = useState("Most popular");
 
@@ -13,9 +10,10 @@ const TourFilters = () => {
         {/* Search */}
         <div>
           <input
+            aria-label="Search tour packages"
             type="text"
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => onSearchChange(e.target.value)}
             placeholder="Search destination or package"
             className="
               h-12

@@ -1,25 +1,24 @@
-"use client";
-
-import { useState } from "react";
-
-const FleetFilters = () => {
-  const [search, setSearch] = useState("");
-  const [passengers, setPassengers] = useState("Any size");
-
+const FleetFilters = ({
+  search,
+  onSearchChange,
+  passengers,
+  onPassengersChange,
+}) => {
   return (
     <div className="mt-4 rounded-3xl border border-border/60 bg-card p-5 shadow-sm sm:mt-6">
       <div className="grid gap-5 md:grid-cols-[1fr_280px] md:items-end">
         
         {/* Search */}
         <div>
-          <label className="mb-2 block text-sm font-medium text-foreground">
+          <label htmlFor="fleet-search" className="mb-2 block text-sm font-medium text-foreground">
             Search vehicle
           </label>
 
           <input
+            id="fleet-search"
             type="text"
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => onSearchChange(e.target.value)}
             placeholder="Search Innova, Tempo, Volvo..."
             className="
               h-11
@@ -42,13 +41,14 @@ const FleetFilters = () => {
 
         {/* Minimum Passengers */}
         <div>
-          <label className="mb-2 block text-sm font-medium text-foreground">
+          <label htmlFor="fleet-passengers" className="mb-2 block text-sm font-medium text-foreground">
             Minimum passengers
           </label>
 
           <select
+            id="fleet-passengers"
             value={passengers}
-            onChange={(e) => setPassengers(e.target.value)}
+            onChange={(e) => onPassengersChange(e.target.value)}
             className="
               h-11
               w-full
