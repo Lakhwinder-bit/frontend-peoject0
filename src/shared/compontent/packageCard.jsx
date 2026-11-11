@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   MapPin,
   Star,
@@ -192,13 +193,12 @@ const TourPackageCard = ({
           </div>
 
           <Button
-            type="button"
+            asChild
             variant="hero"
             size="lg"
             className="rounded-full"
           >
-            Book
-          
+            <Link href="/booking">Book</Link>
           </Button>
         </div>
       </div>
